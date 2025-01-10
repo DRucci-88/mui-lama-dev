@@ -32,38 +32,88 @@ export const Sidebar = () => {
     href: '#settings',
     primary: 'Settings',
     icon: <Settings />
-  }];
+  }, {
+    href: '#home',
+    primary: 'Homepage',
+    icon: <Home />
+  }, {
+    href: '#pages',
+    primary: 'Pages',
+    icon: <Pages />
+  }, {
+    href: '#groups',
+    primary: 'Groups',
+    icon: <Group />
+  }, {
+    href: '#marketplace',
+    primary: 'Marketplace',
+    icon: <MarkChatRead />
+  }, {
+    href: '#friends',
+    primary: 'Friends',
+    icon: <People />
+  }, {
+    href: '#settings',
+    primary: 'Settings',
+    icon: <Settings />
+  }, {
+    href: '#home',
+    primary: 'Homepage',
+    icon: <Home />
+  }, {
+    href: '#pages',
+    primary: 'Pages',
+    icon: <Pages />
+  }, {
+    href: '#groups',
+    primary: 'Groups',
+    icon: <Group />
+  }, {
+    href: '#marketplace',
+    primary: 'Marketplace',
+    icon: <MarkChatRead />
+  }, {
+    href: '#friends',
+    primary: 'Friends',
+    icon: <People />
+  }, {
+    href: '#settings',
+    primary: 'Settings',
+    icon: <Settings />
+  },];
 
-  return (<Box sx={{
-    // backgroundColor: 'skyblue',
-    flex: 1,
-    padding: 2,
-    display: { xs: 'none', sm: 'block' }
-  }}>
-    <List sx={{
-      // backgroundColor: 'plum'
+  return (<Box
+    sx={{
+      // backgroundColor: 'skyblue',
+      flex: 1,
+      padding: 2,
+      display: { xs: 'none', sm: 'block' }
     }}>
-
-      {menus.map((menu, index) => {
-        return (<ListItem key={index + menu.href} disablePadding>
-          <ListItemButton component='a' href={menu.href}>
+    <Box sx={{
+      overflow: 'auto',
+      position: 'fixed',
+      height: '90vh'
+    }}>
+      <List>
+        {menus.map((menu, index) => {
+          return (<ListItem key={index + menu.href} disablePadding>
+            <ListItemButton component='a' href={menu.href}>
+              <ListItemIcon>
+                {menu.icon}
+              </ListItemIcon>
+              <ListItemText primary={menu.primary} />
+            </ListItemButton>
+          </ListItem>);
+        })}
+        <ListItem disablePadding>
+          <ListItemButton >
             <ListItemIcon>
-              {menu.icon}
+              <ModeNight />
             </ListItemIcon>
-            <ListItemText primary={menu.primary} />
+            <Switch />
           </ListItemButton>
-        </ListItem>);
-      })}
-
-      <ListItem disablePadding>
-        <ListItemButton >
-          <ListItemIcon>
-            <ModeNight />
-          </ListItemIcon>
-          <Switch />
-        </ListItemButton>
-      </ListItem>
-
-    </List>
+        </ListItem>
+      </List>
+    </Box>
   </Box>)
 }
