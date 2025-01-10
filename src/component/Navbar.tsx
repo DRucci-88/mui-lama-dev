@@ -34,14 +34,16 @@ const UserBox = styled(Box)(({ theme }) => ({
 
 export const Navbar = () => {
 
-  const [open, setOpen] = useState(false);
+  const [ancorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
+
+  const menuOpen: boolean = Boolean(ancorEl);
 
   const handleOpenMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setOpen(true);
+    setAnchorEl(e.currentTarget);
   }
 
-  const handleCloseMenu = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setOpen(false);
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
   }
 
   return (<>
@@ -67,29 +69,42 @@ export const Navbar = () => {
           <Badge badgeContent={4} color="error">
             <NotificationImportant color="action" />
           </Badge>
-          <Avatar sx={{
-            width: 30,
-            height: 30
-          }}
+          <Avatar
+            id="positioned-menu-avatar"
+            sx={{
+              width: 30,
+              height: 30
+            }}
+            aria-controls={menuOpen ? "positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={menuOpen ? 'true' : undefined}
             src="https://picsum.photos/seed/picsum/200/200"
             onClick={handleOpenMenu}
           />
         </Icons>
 
         <UserBox>
-          <Avatar sx={{
-            width: 30,
-            height: 30,
-          }}
+          <Avatar
+            id="positioned-menu-avatar"
+            sx={{
+              width: 30,
+              height: 30,
+            }}
+            aria-controls={menuOpen ? "positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={menuOpen ? 'true' : undefined}
             src="https://picsum.photos/seed/picsum/200/200"
             onClick={handleOpenMenu} />
           <Typography variant="subtitle2" component={'span'}>Username</Typography>
         </UserBox>
       </StyledToolbar>
       <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
+        id="positioned-menu"
+        aria-labelledby="positioned-menu-avatar"
         onClose={handleCloseMenu}
+        anchorEl={ancorEl}
+        open={menuOpen}
+        // aria-hidden={menuOpen ? undefined : 'true'}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -98,7 +113,6 @@ export const Navbar = () => {
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={open}
       >
         <MenuItem >Profile</MenuItem>
         <MenuItem >My account</MenuItem>
@@ -106,12 +120,4 @@ export const Navbar = () => {
       </Menu>
     </AppBar >
   </>)
-  // return (<Box sx={{
-  //   backgroundColor: 'purple',
-  //   padding: 2,
-  //   display: { xs: 'none', md: 'block' }
-
-  // }}>
-  //   Navbar
-  // </Box>)
 }
