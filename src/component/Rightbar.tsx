@@ -3,11 +3,13 @@ import React from "react"
 
 export const Rightbar = () => {
 
-  return (<Box bgcolor={'lightgreen'} sx={{
-    flex: 2,
-    padding: 2,
-    display: { xs: 'none', sm: 'block' }
-  }}>
+  return (<Box
+    // bgcolor={'lightgreen'}
+    sx={{
+      flex: 2,
+      padding: 2,
+      display: { xs: 'none', md: 'block' }
+    }}>
     <Box sx={{
       position: 'fixed',
       overflow: 'auto',
@@ -20,7 +22,7 @@ export const Rightbar = () => {
       </Typography>
       <AvatarGroup max={7}>
         {Array(10).fill(0).map((_, index) => {
-          return <Avatar key={index} alt="Remy Sharp" src="https://picsum.photos/200/200" />
+          return <Avatar key={index} alt="Remy Sharp" src="https://picsum.photos/400/400" />
         })}
       </AvatarGroup>
 
