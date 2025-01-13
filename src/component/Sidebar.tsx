@@ -2,7 +2,12 @@ import { Group, Home, MarkChatRead, ModeNight, Pages, People, Settings, } from "
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from "@mui/material"
 import { ReactElement } from "react";
 
-export const Sidebar = () => {
+interface SidebarProps {
+  mode: 'light' | 'dark';
+  changeTheme: (mode: 'light' | 'dark') => void;
+}
+
+export const Sidebar = ({ mode, changeTheme }: SidebarProps) => {
 
   const menus: Array<{
     href: string,
@@ -110,7 +115,9 @@ export const Sidebar = () => {
             <ListItemIcon>
               <ModeNight />
             </ListItemIcon>
-            <Switch />
+            <Switch onChange={() => {
+              changeTheme(mode === 'light' ? 'dark' : 'light');
+            }} />
           </ListItemButton>
         </ListItem>
       </List>

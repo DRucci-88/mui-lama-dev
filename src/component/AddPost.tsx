@@ -38,10 +38,10 @@ export const AddPost = () => {
       aria-describedby="modal-modal-description"
     >
       <Box
+        bgcolor={'background.default'} color={'text.primary'}
         sx={{
           width: 400,
           height: 280,
-          bgcolor: 'white',
           p: 3,
           borderRadius: 5,
         }}
